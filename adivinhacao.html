@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jogo de Adivinhação</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #e91e63;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #e91e63;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #d81b60;
+        }
+
+        .result {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jogo de Adivinhação</h1>
+    <p>Adivinhe um número entre 1 e 100!</p>
+    <!-- Campo de entrada e botão -->
+    <input type="number" id="userInput" placeholder="Digite um número" min="1" max="100">
+    <button id="guessButton">Adivinhar</button>
+
+    <!-- Exibir o resultado -->
+    <p class="result" id="resultMessage"></p>
+
+    <script>
+        // Gera um número secreto aleatório entre 1 e 100
+        const secretNumber = Math.floor(Math.random() * 100) + 1;
+        const resultMessage = document.getElementById('resultMessage');
+
+        // Função para verificar a adivinhação
+        document.getElementById('guessButton').addEventListener('click', function() {
+            const userGuess = parseInt(document.getElementById('userInput').value);
+            
+            if (!userGuess || userGuess < 1 || userGuess > 100) {
+                resultMessage.textContent = 'Por favor, insira um número válido entre 1 e 100.';
+                return;
+            }
+
+            if (userGuess === secretNumber) {
+                resultMessage.textContent = 'Parabéns! Você acertou o número!';
+                resultMessage.style.color = 'green';
+            } else if (userGuess < secretNumber) {
+                resultMessage.textContent = 'Muito baixo! Tente um número maior.';
+                resultMessage.style.color = 'red';
+            } else {
+                resultMessage.textContent = 'Muito alto! Tente um número menor.';
+                resultMessage.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
