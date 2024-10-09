@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Botão de Cor Aleatória (RGB)</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #e91e63; /* Cor inicial */
+            color: white;
+            border: none;
+            border-radius:50px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease; /* Suaviza a transição da cor */
+        }
+    </style>
+</head>
+<body>
+    <!-- Botão que muda de cor -->
+    <button id="colorButton" onclick="changecolor(this)">Mude minha cor!</button>
+
+    <script>
+        function changecolor(x){
+            const r = Math.floor(Math.random() * 256); // Valor para o vermelho (0-255)
+            const g = Math.floor(Math.random() * 256); // Valor para o verde (0-255)
+            const b = Math.floor(Math.random() * 256); // Valor para o azul (0-255)
+            x.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        }
+    </script>
+</body>
+</html>
